@@ -74,16 +74,23 @@ async def start(client, message):
         
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton("🔍 Search Movies Or Series 🔎", callback_data="source")
+                InlineKeyboardButton('🔍Search Movie Or Series🔎', callback_data='main')
             ],[
-            InlineKeyboardButton("Main Update Cʜᴀɴɴᴇʟ 🔈", url=f'https://t.me/iPopkornBot_ipop_bot')
-            ],[      
-            InlineKeyboardButton("Share Bot to Friends", url=f'https://t.me/share/url?url=https%3A//t.me/iPapkorndbot')
-        ]]
-        m = await message.reply_sticker("CAACAgUAAxkBAAEBvlVk7YKnYxIHVnKW2PUwoibIR2ygGAACBAADwSQxMYnlHW4Ls8gQHgQ")
-        await asyncio.sleep(2)
-        await message.reply_photo(photo=random.choice(PICS), caption=START_MESSAGE.format(user=message.from_user.mention, bot=client.mention), reply_markup=InlineKeyboardMarkup(buttons), parse_mode=enums.ParseMode.HTML)
-        return await m.delete()
+                InlineKeyboardButton('⍟ Share This Bot', url=f'https://t.me/share/url?url=https%3A//t.me/iPapkornDbot')
+            ],[
+                InlineKeyboardButton('✇ Bot Updates Channel ✇', url=CHNL_LNK)
+            ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        m=await message.reply_sticker("CAACAgUAAxkBAAEMJslmS0LzT_5L2Ci3PMTfM3T3BtgT2wACWQIAAsStOVQJnSMLAlSHAzUE") 
+        await asyncio.sleep(1)
+        await m.delete()
+        await message.reply_photo(
+            photo=random.choice(PICS),
+            caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+        return
         
     data = message.command[1]
     try:
