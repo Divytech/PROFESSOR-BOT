@@ -33,8 +33,6 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention, message.from_user.username, temp.U_NAME))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton("🔍 Search Movies Or Series 🔎", callback_data="source")
-            ],[
             InlineKeyboardButton("Main Update Cʜᴀɴɴᴇʟ 🔈", url=f'https://t.me/iPopkornBot_ipop_bot')
             ],[      
             InlineKeyboardButton("Share Bot to Friends", url=f'https://t.me/share/url?url=https%3A//t.me/iPapkorndbot')
